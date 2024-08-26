@@ -21,7 +21,7 @@ func enableCORS(next http.Handler) http.Handler {
 func todosHandler(db *sql.DB, w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
-		getTodosHandler(db, w)
+		getTodosHandler(db, w, r)
 	case "POST":
 		postTodoHandler(db, w, r)
 	default:
@@ -54,6 +54,20 @@ func main() {
 	})
 	mux.HandleFunc("/todos/", func(w http.ResponseWriter, r *http.Request) {
 		todoHandler(db, w, r)
+	})
+	mux.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "POST" {
+			loginUserHandler(db, w, r)
+		} else {
+			http.NotFound(w, r)
+		}
+	})
+	mux.HandleFunc("/signup", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "POST" {
+			signUpUserHandler(db, w, r)
+		} else {
+			http.NotFound(w, r)
+		}
 	})
 
 	fmt.Println("listening on port 8080..")

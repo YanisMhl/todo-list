@@ -17,14 +17,18 @@ button {
     padding: 10px;
 }
 
+input {
+    padding: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+    filter: brightness(90%);
+}
+
 .todo-form {
     display: flex;
     gap: 0.5em;
-    input {
-        padding: 10px;
-        border: none;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
 }
 
 .todo-list {
@@ -54,4 +58,25 @@ button {
 .todo-btns {
     display: flex;
     gap: 0.8em;
+}
+
+.modal { 
+    position: inherit;
+    padding: 20px;
+    border-radius: 20px;
+    width: 500px;
+    height: 100px;
+    top: 20%;
+    left: 33%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    button {
+        background-color: #ffcd6b;
+        color: white;
+    }
 }
